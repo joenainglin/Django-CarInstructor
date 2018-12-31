@@ -1,0 +1,178 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<section class="slice slice-xl pb-md">
+            <div class="container pt-lg-lg">
+                <div class="row row-grid justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="heading h1 mb-4">Job openings</h2>
+                        <p class="lead lh-180">With Purpose we want to optimize the customization process so your team can save time when building websites.</p>
+                        
+
+
+                   {% if request.user.profile.grouptype == 'Learner'%}
+
+
+              <div class="mt-5">
+                            <a href="{% url 'leasson:createleasson' %}" class="btn btn-primary btn-circle px-5 mr-lg-4">Book a leasson</a>
+                            
+                        </div>
+
+
+                 
+              {%elif request.user.profile.grouptype == 'Instructor'%}
+               
+                <div class="mt-5">
+                            <a href="{% url 'leasson:MyJob' %}" class="btn btn-primary btn-circle px-5 mr-lg-4">My Job</a>
+                            
+                        </div>
+
+              {%endif%}
+                     
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+
+<section class="slice slice-lg bg-gradient-primary">
+            <span class="tongue tongue-top"><i class="far fa-angle-up"></i></span>
+            <div class="container">
+                <div class="mb-md text-center">
+                    <h3 class="heading h2 text-white">We help businesses grow</h3>
+                  
+                </div>
+               <table class="table table-hover table-cards align-items-center">
+    <thead>
+
+
+
+
+
+        <tr>
+            <th scope="col ">Date</th>
+            <th scope="col">Name</th>
+            <th scope="col">Service</th>
+
+       
+        </tr>
+    </thead>
+
+    {% for object in object_list %}
+  {% if object.instructor is Null %}
+    <tbody>
+        <tr class="table-divider"></tr>
+        <tr class="bg-white">
+             <td class="h5 font-weight-normal ">{{ object.date}}</td>
+            <th scope="row">
+
+                {% if user == object.name %}
+                   <div class="media align-items-center">
+                    <a href="{{ object.get_absolute_url}}">
+                   <span class="avatar avatar-sm bg-gradient-primary ">{{ object.name.user.first_name}}</span>
+               </a>
+                   <!--
+                    <div class="media-body">
+                        <h6 class="h5 font-weight-normal mb-0">{{ object.name.username}}</h6>
+                    </div>
+                    -->
+                </div>
+                {%else%}
+                   <div class="media align-items-center">
+                    <a href="{{ object.get_absolute_url}}">
+                   <span class="avatar avatar-sm bg-green ">{{ object.name.user.first_name}}</span>
+               </a>
+                   <!--
+                    <div class="media-body">
+                        <h6 class="h5 font-weight-normal mb-0">{{ object.name.username}}</h6>
+                    </div>
+                    -->
+                </div>
+                {%endif%}
+             
+            </th>
+            <td class="h5 font-weight-normal mb-0">{{ object.service_type}}</td>
+    
+            
+        </tr>
+    
+        {%endif%}
+{%endfor %}
+
+
+    </tbody>
+</table>
+                        <div class="text-center mt-5">
+                            <a href="#" class="text-white"><i class="far fa-angle-right mr-2"></i>View all job openings</a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </section>
+
+
+
+
+
+
+<!--
+<h1>Avaliable</h1>
+
+{% for object in object_list %}
+  {% if object.instructor is Null %}
+    <ul class="list-group">
+
+    <a href="{{ object.get_absolute_url}}">
+    <li class="list-group-item d-flex justify-content-between align-items-center"> {{ object.name.username}}
+    <button class="btn btn-outline-secondary" type="button">{{object.duration}}</button>
+
+
+    </li>
+    </a>
+
+    </ul>
+
+    {%endif%}
+{%endfor %}
+
+<hr>
+
+<h1>Taken</h1>
+{% for object in object_list %}
+  {% if object.instructor  %}
+    <ul class="list-group">
+
+    <a href="{{ object.get_absolute_url}}">
+    <li class="list-group-item d-flex justify-content-between align-items-center"> {{ object.name.username}}
+    <button class="btn btn-outline-secondary" type="button">{{object.duration}}</button>
+
+
+    </li>
+    </a>
+
+    </ul>
+
+    {%endif%}
+{%endfor %}
+
+
+
+<hr>
+
+<a class="btn btn-outline-success" href="{% url 'leasson:createleasson' %}">Add</a> 
+
+
+</section>
+
+-->
+
+{% endblock %}
+

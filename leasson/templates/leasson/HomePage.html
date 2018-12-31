@@ -1,0 +1,131 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<section class="slice slice-xl pb-md bg-secondary">
+            <div class="container pt-lg-lg">
+
+                <div class="row row-grid justify-content-center">
+
+                    <div class="col-lg-8 text-center">
+                          <h1 class="heading h1">Instructor</h1>
+                        <h6 class="text-uppercase ls-2 text-black font-weight-700">Pricing</h6>
+                        <h2 class="heading h1 text-black">Choose the best plan for your business</h2>
+                        <p class="lead lh-180">With Purpose we want to optimize the customization process so your team can save time when building websites.</p>
+                        
+
+
+                   
+                     
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+
+<section class="slice slice-lg bg-gradient-primary pb-15" >
+            <span class="tongue tongue-top"><i class="far fa-angle-up"></i></span>
+       <div class="slice">
+            <div class="container">
+                <div class="row row-grid justify-content-center ">
+                    <div class="col-lg-9">
+                        <div class="card-deck flex-column flex-md-row ">
+
+{% if user.is_authenticated %}
+    {% if user.profile.grouptype == "Learner"%}
+                            <div class="card card-pricing zoom-in shadow-lg px-4 mr-0 mb-4 ">
+                                <div class="card-header py-md text-center border-0">
+                                    <h4 class="mb-4">Learner</h4>
+                                    <p class="text-muted">With each purchase you get a pack of high quality components and page layouts to start building your website instantly.</p>
+
+                                     <a href="{% url 'leasson:createleasson' %}" class="btn btn-primary btn-circle px-5 mr-lg-4">Start your leasson</a>
+                                    
+
+
+
+                                </div>
+                            </div>
+    {%endif%}
+
+    {% if user.profile.grouptype == "Instructor"%}
+                            <div class="card card-pricing px-4 ml-0 mb-4">
+                                <div class="card-header py-md text-center border-0">
+                                    <h4 class="mb-4">Instructor</h4>
+                                    <p class="text-muted">With each purchase you get a pack of high quality components and page layouts to start building your website instantly.</p>
+                                    
+                                        
+                                          <a href="{% url 'leasson:dashboard' %}" class="btn btn-primary btn-circle px-5 mr-lg-4">Start working</a>
+                                
+                     
+                                    </a>
+                                </div>
+
+    {%endif%}
+    {%else%}
+
+
+                                <div class="card card-pricing zoom-in shadow-lg px-4 mr-0 mb-4 ">
+                                <div class="card-header py-md text-center border-0">
+                                    <h4 class="mb-4">Learner</h4>
+                                    <p class="text-muted">With each purchase you get a pack of high quality components and page layouts to start building your website instantly.</p>
+
+                                     <a href="{% url 'leasson:createleasson' %}" class="btn btn-primary btn-circle px-5 mr-lg-4">Start your leasson</a>
+                                    
+
+
+
+                                </div>
+                            </div>
+
+
+                            <div class="card card-pricing px-4 ml-0 mb-4">
+                                <div class="card-header py-md text-center border-0">
+                                    <h4 class="mb-4">Instructor</h4>
+                                    <p class="text-muted">With each purchase you get a pack of high quality components and page layouts to start building your website instantly.</p>
+                                    
+                                        
+                                          <a href="{% url 'leasson:dashboard' %}" class="btn btn-primary btn-circle px-5 mr-lg-4">Start working</a>
+                                
+                     
+                                    </a>
+                                </div>
+
+{%endif%}
+
+                
+
+                            </div>
+                        </div>
+
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+</section>
+        <section class="slice slice-lg bg-secondary">
+
+            <span class="tongue tongue-top"><i class="far fa-angle-up"></i></span>
+
+            <div class="container">
+                <div class="row justify-content-center align-items-center">
+                    <div class="col-lg-8 text-center">
+                        <h3 class="font-weight-400">I am ready to start a using <span class="font-weight-700">Car</span> .</h3>
+                        <div class="mt-5">
+                             <a href="" class="btn btn-primary btn-circle px-5 mr-lg-4">Support</a>
+                            <a href="mailto:support@car.gmail.com" class="btn btn-link">We here to help!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+   
+
+
+{% endblock %}
+

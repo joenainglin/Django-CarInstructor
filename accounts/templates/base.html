@@ -1,0 +1,276 @@
+
+{% load staticfiles %}
+{% load bootstrap4 %}
+
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- <title>{% block title %} {% endblock %}</title> -->
+	<!--<link  href="{% static 'css/post.css' %}" rel="stylesheet" > -->
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Karenni Brisbane</title>
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="{% static './css/bootstrap.min.css' %}" rel="stylesheet">
+     <link href="{% static './css/style.css' %}" rel="stylesheet">
+
+         <link href="{% static './css/theme.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+
+ 
+
+</head>
+
+
+<body data-aos-easing="ease" data-aos-duration="800" data-aos-delay="0" class="">
+
+
+    <!-- header -->
+    <header class="header-sticky header-light headroom headroom--not-bottom headroom--pinned headroom--top">
+     <nav class="navbar navbar-main navbar-expand-lg navbar-sticky navbar-transparent navbar-light bg-white" id="navbar-main">
+            <div class="container">
+
+                <a class="navbar-brand mr-lg-5" href="{% url 'leasson:home' %}">
+                   <h1>Car</h1>
+                </a>
+
+                   
+                    
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+ {% if user.is_authenticated %}
+   
+                <div class="collapse navbar-collapse" id="navbar-main-collapse">
+                    <ul class="navbar-nav align-items-lg-center">
+
+                       {% if user.profile.grouptype == "Instructor"%}
+                        <li class="nav-item ">
+                            <a class="p-2 text-dark" href="{% url 'leasson:dashboard' %}">Dashboard</a>
+
+                        </li>
+                        
+                         <li class="nav-item ">
+
+        <a class="p-2 text-dark" href="{% url 'leasson:MyJob' %}">My Job</a>
+                        </li>
+                         
+        {%else%}
+        
+
+        <li class="nav-item ">
+
+        <a class="p-2 text-dark" href="{% url 'leasson:createleasson' %}">Book</a>
+
+                        </li>
+                        <li class="nav-item ">
+
+        <a class="p-2 text-dark" href="{% url 'leasson:my_leasson' %}">My Booking</a>
+
+                        </li>
+                        {%endif%}
+                         </ul>
+                   
+                    
+{%endif%}
+{% if user.is_authenticated %} 
+                    <ul class="navbar-nav align-items-lg-center ml-lg-auto">
+                       
+                        <li class="nav-item mr-0">
+                           
+
+               <a  class="btn btn-outline-success"  href="{% url 'accounts:profile' %}"  ">{{user.username}}</a> 
+
+
+                  <a class="btn btn-outline-primary" href="{% url 'accounts:logout' %}">Logout</a> 
+                
+                   {%else%}
+
+               <a class="btn btn-outline-success" href="{% url 'accounts:login' %}">Sign in</a> 
+
+
+
+        
+               {%endif%}
+
+
+                           
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+
+      {% block content %}
+      {% endblock %}
+</div>
+<!--
+          <section class="bg-purple">
+      <div class="container text-white">
+        <div class="row justify-content-between">
+          <div class="col-md-4">
+            <h2><b>We deliver</b> best experiences.</h2>
+          </div>
+          <div class="col-md-7">
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Temporibus, ea natus porro, laboriosam explicabo aut esse. Labore dolorem a suscipit repellendus repellat minus, quaerat nihil exercitationem, accusamus illo aut nulla?</p>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <div class="row aos-init" data-aos="zoom-in">
+          <div class="col">
+            <div class="boxed p-5 p-lg-10">
+              <div class="container">
+                <div class="row justify-content-between align-items-center">
+                  <div class="col-md-5">
+                    <h2 class="display-3 mb-1"><b>Engage</b> your visitors</h2>
+                    <p>Appropriately reintermediate resource-leveling functionalities through resource.</p>
+                    <div class="input-group mt-2">
+                      <input type="text" class="form-control px-3" placeholder="your@mail.com" aria-label="Get a free copy">
+                      <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">Subscribe</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <img src="../../assets/images/demo/service/service-1.svg" alt="Image">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </section>
+
+
+
+      </body>
+
+
+
+
+
+
+
+-->
+
+
+
+    <!-- footer -->
+    <footer>
+      <div class="container pb-5">
+        <div class="row">
+          <div class="col">
+            <h2 class="h3">Rue du Monte 47, 1000 <br><b>Brussels, Belgium</b></h2>
+          </div>
+          <div class="col text-right">
+            <ul class="list-group list-group-minimal">
+              <li class="list-group-item"><a href="">Facebook</a></li>
+              <li class="list-group-item"><a href="">Twitter</a></li>
+              <li class="list-group-item"><a href="">Instagram</a></li>
+              <li class="list-group-item"><a href="">Linkedin</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="container py-5">
+          <div class="row justify-content-between align-items-center">
+            <div class="col">
+             <h1> Car</h1>
+            </div>
+            <div class="col text-right">
+              <span class="copyright-text">© Made with love.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- / footer -->
+
+
+
+
+<!--
+
+<body>
+
+
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <h5 class="my-0 mr-md-auto font-weight-normal">Car</h5>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <a class="p-2 text-dark" href="{% url 'leasson:dashboard' %}">Dashboard</a>
+        <a class="p-2 text-dark" href="{% url 'leasson:my_leasson' %}">My Booking</a>
+        <a class="p-2 text-dark" href="{% url 'leasson:MyJob' %}">My Job</a>
+
+      </nav>
+
+      {% if user.is_authenticated %}
+
+               <a  class="btn btn-outline-success"  href="{% url 'accounts:profile' %}" style="margin-right: 15px; ">{{user.username}}</a> 
+
+
+                  <a class="btn btn-outline-primary" href="{% url 'accounts:logout' %}">Logout</a> 
+                
+                   {%else%}
+
+               <a class="btn btn-outline-success"style="margin-right: 15px;" href="{% url 'accounts:login' %}">Sign in</a> 
+
+
+
+                  <a class="btn btn-primary" href="{% url 'accounts:register' %}">Sign up</a> 
+        
+               {%endif%}
+
+    </div>
+  Start of header 
+     
+
+        <div class="container">
+
+          </div>
+
+
+  </div> 
+
+-->
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+
+<script src="{% static './js/popper.min.js' %}"></script>
+<script src="{% static './js/bootstrap.min.js' %}"></script>
+<script src="{% static './js/holder.min.js' %}"></script>
+<script src="{% static './js/vendor.js' %}"></script>
+<script src="{% static './js/app.js' %}"></script>
+<script>
+      Holder.addTheme('thumb', {
+        bg: '#55595c',
+        fg: '#eceeef',
+        text: 'Thumbnail'
+      });
+    </script>
+
+</body><script>
+</html>

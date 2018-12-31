@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Log-in{% endblock %}
+
+{% block content %}
+
+<section class="slice slice-l pb-md">
+            <div class="container pt-lg-lg">
+               
+            </div>
+        </section>
+
+
+
+<section class="slice slice-lg bg-gradient-primary">
+            <span class="tongue tongue-top"><i class="far fa-angle-up"></i></span>
+            <div class="container">
+                <div class="mb-md text-center">
+                    <h3 class="heading h2 text-white">Log-in</h3>
+                  
+
+
+  {% if form.errors %}
+    <p>
+      Your username and password didn't match.
+      Please try again.
+    </p>
+  {% else %}
+    <p>Please, use the following form to log-in:</p>
+  {% endif %}
+  <div class="login-form">
+    <form action="." method="post">
+      {{ form|crispy  }}
+      {% csrf_token %}
+      <input type="hidden" />
+      <p><input type="submit" class="btn btn-success" value="Log-in">
+      </p>
+    </form>
+
+   <p class=" text-white"><a href="{% url 'accounts:register' %}">Sign up </a></p>
+
+   
+    <p class="  text-white"><a href="{% url 'accounts:register' %}">Forgotten your 
+ password?</a></p>
+
+</div>
+</div>
+</div>
+</section>
+
+  </div>
+{% endblock %}
+

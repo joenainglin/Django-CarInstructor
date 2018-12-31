@@ -1,0 +1,45 @@
+
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+
+{% block title %} My blog {% endblock %}
+
+{% block content %}
+
+
+<h1>Detail</h1>
+
+  <hr>
+
+<div class="row">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <p class="card-text">{{object_list.service_type}}</p>
+        <p class="card-text">{{object_list.duration}} Hour</p>
+        <p class="card-text">{{object_list.date}}</p>
+        <p class="card-text">{{object_list.time}}</p>
+
+
+     
+
+         <p class="card-text">{{object_list.instructor}}</p>
+         <p class="card-text">{{object_list.likes}}</p>
+          
+
+          
+
+
+          
+
+      </div>
+    </div>
+  </div>
+ 
+
+
+
+
+{% endblock %}

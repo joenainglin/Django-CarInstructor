@@ -1,0 +1,192 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+
+<section class="slice slice-xl pb-md ">
+            <div class="container pt-lg-lg">
+                <div class="row row-grid justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="heading h1 mb-4">Profile</h2>
+                        <p class="lead lh-180">With Purpose we want to optimize the customization process so your team can save time when building websites.</p>
+
+     
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+
+
+<section class="slice slice-lg bg-gradient-primary">
+            <span class="tongue tongue-top"><i class="far fa-angle-up"></i></span>
+            <div class="container">
+                <div class="mb-md text-center   ">
+                    <h3 class="heading h2 text-white"></h3>
+                   <div class="col-lg-12 " style="padding-bottom: 10px;">
+       
+        <div class="card">
+            <div class="card-body">
+               <h2 class="heading h1 mb-4">{{user}}</h2>
+
+  
+                        <h5 class="h6 text-muted text-uppercase"></h5>
+
+
+                        <!--<h3 class="h3">One culture. One purpose</h3> -->
+                        <div class="row mt-5">
+                            <div class="col-md-6" >
+                                <h3 class="h5 mb-3">Name</h3>
+                                <p class="">{{user}}</p>
+                            </div>
+
+                            <div class="col-md-6 mt-4" >
+                                <h3 class="h5 mb-3">User Type</h3>
+                                <p class="">{{user.profile.grouptype}}</p>
+                            </div>
+                        </div>
+
+                        <div class="row mt-4">
+                            <div class="col-md-6">
+                                <h3 class="h5 mb-3">Email</h3>
+                                <p class="">{{user.email}}</p>
+                            </div>
+
+                            <div class="col-md-6 mt-4">
+                                <h3 class="h5 mb-3">Last Login</h3>
+                                <p class="">{{user.last_login}}</p>
+                            </div>
+                        </div>
+
+
+<a href="{% url 'accounts:userprofileedit' %}"><button  class="btn btn-lg btn-block btn-primary text-white btn-circle px-5 mr-lg-4">Edit Profile</button></a>
+<hr>
+
+
+                  {% if request.user.profile.grouptype == 'Learner'%}
+                  <h2 class="heading h1 mb-4">Address</h2>
+{% for address in useraddress %}
+
+               
+
+  <p>
+                        {{address.street_no}} {{address.street_name}} {{address.zipcode}} {{address.city}} {{address.state}}</p>
+                        
+{%endfor%}
+
+     <!--
+                           <a href="{% url 'accounts:useraddress' %}"><button  class="btn btn-lg btn-block btn-primary text-white btn-circle px-5 mr-lg-4">Add Address</button></a>
+-->
+                 
+              {%elif request.user.profile.grouptype == 'Instructor'%}
+               
+              
+
+
+
+               <h2 class="heading h1 mb-4">Qualifiication</h2>
+{% for userqualification in qualification %}
+  
+                        <h5 class=" h5 mb-3">Title: </h5><p>{{userqualification.title}}</p>
+                        <h5 class="h5 mb-3">Year: </h5><p>{{userqualification.year}}</p>
+                        <h5 class="h5 mb-3">Description: </h5><p>{{userqualification.description}}</p>
+<!--
+                         <a href="#"><button  class="btn btn-lg btn-block btn-primary text-white btn-circle px-5 mr-lg-4">Edit Qualification</button></a> -->
+<hr>
+                        
+{%endfor%}
+
+                       
+
+                          
+                           <a href="{% url 'accounts:userqualification' %}"><button  class="btn btn-lg btn-block btn-primary text-white btn-circle px-5 mr-lg-4">Add Qualification</button></a>
+  {%endif%}
+                         
+  </div>    
+                    </div>
+
+
+
+
+                  </div>
+
+                   
+
+                </div>
+                </div>
+                  
+        <div class="text-center  text-white">                                   
+ 
+                       
+            
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+
+<section class="slice slice-lg delimiter-top">
+            <div class="container">
+                <div class="mb-md text-center">
+                    <h3 class="heading h2">Helpful answers</h3>
+                    <div class="fluid-paragraph mt-3">
+                        <p class="lead">Start building fast, beautiful and modern looking websites in no time using our theme.</p>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div id="accordion_1" data-accordion="1">
+                            <div class="card mb-3">
+                                <div class="card-header bg-secondary py-4 collapsed" id="heading_1_1" data-toggle="collapse" data-target="#collapse_1_1" aria-expanded="false" aria-controls="collapse_1_1">
+                                    <h5 class="heading h5 font-weight-normal mb-0"><i class="far fa-file-pdf mr-3"></i>Which license do I need?</h5>
+                                </div>
+
+                                <div id="collapse_1_1" class="collapse" aria-labelledby="heading_1_1" data-parent="#accordion_1">
+                                    <div class="card-body">
+                                        <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch
+                                            3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mb-3">
+                                <div class="card-header bg-secondary py-4 collapsed" id="heading_1_2" data-toggle="collapse" data-target="#collapse_1_2" aria-expanded="false" aria-controls="collapse_1_2">
+                                    <h5 class="heading h5 font-weight-normal mb-0"><i class="fab fa-safari mr-3"></i>How do I get access to a theme I purchased?</h5>
+                                </div>
+
+                                <div id="collapse_1_2" class="collapse" aria-labelledby="heading_1_2" data-parent="#accordion_1">
+                                    <div class="card-body">
+                                        <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch
+                                            3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mb-3">
+                                <div class="card-header bg-secondary py-4 collapsed" id="heading_1_3" data-toggle="collapse" data-target="#collapse_1_3" aria-expanded="false" aria-controls="collapse_1_3">
+                                    <h5 class="heading h5 font-weight-normal mb-0"><i class="far fa-credit-card mr-3"></i>How do I attach previous orders to my account</h5>
+                                </div>
+
+                                <div id="collapse_1_3" class="collapse" aria-labelledby="heading_1_3" data-parent="#accordion_1">
+                                    <div class="card-body">
+                                        <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch
+                                            3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+{% endblock %}

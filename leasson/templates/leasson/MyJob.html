@@ -1,0 +1,148 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+
+<section class="slice slice-xl pb-md">
+            <div class="container pt-lg-lg">
+                <div class="row row-grid justify-content-center">
+                    <div class="col-lg-8 text-center">
+                        <h2 class="heading h1 mb-4"> My Job </h2>
+                        <p class="lead lh-180">With Purpose we want to optimize the customization process so your team can save time when building websites.</p>
+                       
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+
+<section class="slice slice-lg bg-gradient-primary">
+            <span class="tongue tongue-top"><i class="far fa-angle-up"></i></span>
+            <div class="container">
+                <div class="mb-md text-center">
+                   
+                  
+                </div>
+               <table class="table table-hover table-cards align-items-center">
+    <thead>
+
+
+
+
+
+
+        <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Name</th>
+            <th scope="col">Service</th>
+       
+        </tr>
+    </thead>
+    {% for object in UserJob %}
+    <tbody>
+        <tr class="table-divider"></tr>
+        <tr class="bg-white">
+             <td class="h5 font-weight-normal ">{{ object.date}}</td>
+              <th scope="row">
+                <div class="media align-items-center">
+                    <a href="{{ object.get_absolute_url}}">
+                      {{ object.name.user}}
+                  </a>
+                   <!--
+                    <div class="media-body">
+                        <h6 class="h5 font-weight-normal mb-0">{{ object.name.username}}</h6>
+                    </div>
+                    -->
+                </div>
+            </th>
+                      <!--
+            <th scope="row">
+                <div class="media align-items-center">
+                   <span class="avatar avatar-lg bg-pink mr-3">{{ object.name.username}}</span>
+                   
+                    <div class="media-body">
+                        <h6 class="h5 font-weight-normal mb-0">{{ object.name.username}}</h6>
+                    </div>
+                    -->
+                </div>
+            </th>
+            <td class="h5 font-weight-normal mb-0">{{ object.service_type}}</td>
+    
+            
+        </tr>
+    
+      
+{%endfor %}
+
+
+    </tbody>
+</table>
+                        <div class="text-center mt-5">
+                            <a href="#" class="text-white"><i class="far fa-angle-right mr-2"></i>View all job openings</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+<section class="slice slice-lg delimiter-top">
+            <div class="container">
+                <div class="mb-md text-center">
+                    <h3 class="heading h2">Helpful answers</h3>
+                    <div class="fluid-paragraph mt-3">
+                        <p class="lead">Start building fast, beautiful and modern looking websites in no time using our theme.</p>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div id="accordion_1" data-accordion="1">
+                            <div class="card mb-3">
+                                <div class="card-header bg-secondary py-4 collapsed" id="heading_1_1" data-toggle="collapse" data-target="#collapse_1_1" aria-expanded="false" aria-controls="collapse_1_1">
+                                    <h5 class="heading h5 font-weight-normal mb-0"><i class="far fa-file-pdf mr-3"></i>Which license do I need?</h5>
+                                </div>
+
+                                <div id="collapse_1_1" class="collapse" aria-labelledby="heading_1_1" data-parent="#accordion_1">
+                                    <div class="card-body">
+                                        <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch
+                                            3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mb-3">
+                                <div class="card-header bg-secondary py-4 collapsed" id="heading_1_2" data-toggle="collapse" data-target="#collapse_1_2" aria-expanded="false" aria-controls="collapse_1_2">
+                                    <h5 class="heading h5 font-weight-normal mb-0"><i class="fab fa-safari mr-3"></i>How do I get access to a theme I purchased?</h5>
+                                </div>
+
+                                <div id="collapse_1_2" class="collapse" aria-labelledby="heading_1_2" data-parent="#accordion_1">
+                                    <div class="card-body">
+                                        <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch
+                                            3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mb-3">
+                                <div class="card-header bg-secondary py-4 collapsed" id="heading_1_3" data-toggle="collapse" data-target="#collapse_1_3" aria-expanded="false" aria-controls="collapse_1_3">
+                                    <h5 class="heading h5 font-weight-normal mb-0"><i class="far fa-credit-card mr-3"></i>How do I attach previous orders to my account</h5>
+                                </div>
+
+                                <div id="collapse_1_3" class="collapse" aria-labelledby="heading_1_3" data-parent="#accordion_1">
+                                    <div class="card-body">
+                                        <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch
+                                            3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+{% endblock %}
