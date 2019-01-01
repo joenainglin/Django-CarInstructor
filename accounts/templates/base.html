@@ -1,6 +1,7 @@
 
 {% load staticfiles %}
 {% load bootstrap4 %}
+{% load custom_tags %}
 
 <!DOCTYPE html>
 <!DOCTYPE html>
@@ -57,13 +58,13 @@
 
                        {% if user.profile.grouptype == "Instructor"%}
                         <li class="nav-item ">
-                            <a class="p-2 text-dark" href="{% url 'leasson:dashboard' %}">Dashboard</a>
+                            <a class="p-2 text-dark" href="{% url 'leasson:dashboard' %}">Dashboard <span class="badge badge-success ml-2">{%totalavailablejobs%}</span></a> 
 
                         </li>
-                        
+                      
                          <li class="nav-item ">
 
-        <a class="p-2 text-dark" href="{% url 'leasson:MyJob' %}">My Job</a>
+        <a class="p-2 text-dark" href="{% url 'leasson:MyJob' %}">My Job </a>
                         </li>
                          
         {%else%}

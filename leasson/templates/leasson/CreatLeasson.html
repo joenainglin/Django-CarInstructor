@@ -9,10 +9,29 @@
 {% block content %}
 
 
+
 <section class="slice slice-xl pb-md">
             <div class="container pt-lg-lg">
+
+                 {% if messages %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <span class="alert-inner--icon"><i class="fas fa-check"></i></span>
+    {% for message in messages %}
+                     <span class="alert-inner--text">{{message}}</span>
+                {% endfor %}
+
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+
+
+{% endif %}
                 <div class="row row-grid justify-content-center">
                     <div class="col-lg-8 text-center">
+
+
                         <h2 class="heading h1 mb-4">Job openings</h2>
                         <p class="lead lh-180">With Purpose we want to optimize the customization process so your team can save time when building websites.</p>
                       

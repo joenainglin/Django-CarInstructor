@@ -183,3 +183,8 @@ def userqualificationedit(request, slug):
             post.save()
 
     return render(request, 'accounts/UserQualificationEdit.html',{'object_list': object_list, } )
+
+
+def getuserprofile(request, username):
+    userprofile = User.objects.get(username=username)
+    return render(request, 'accounts/GetProfile.html', {"userprofile":userprofile})

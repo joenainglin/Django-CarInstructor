@@ -57,24 +57,26 @@
         <tr>
             <th scope="col ">Date</th>
             <th scope="col">Name</th>
-            <th scope="col">Service</th>
+            <th scope="col">Time</th>
 
        
         </tr>
     </thead>
 
     {% for object in object_list %}
-  {% if object.instructor is Null %}
+
     <tbody>
         <tr class="table-divider"></tr>
         <tr class="bg-white">
-             <td class="h5 font-weight-normal ">{{ object.date}}</td>
+             <td class="h5 font-weight-normal ">{{ object.date}}
+             </td>
             <th scope="row">
 
-                {% if user == object.name %}
+                
+                
                    <div class="media align-items-center">
                     <a href="{{ object.get_absolute_url}}">
-                   <span class="avatar avatar-sm bg-gradient-primary ">{{ object.name.user.first_name}}</span>
+                   <span class="avatar avatar-sm bg-green ">{{ object.name.user.username}}</span>
                </a>
                    <!--
                     <div class="media-body">
@@ -82,26 +84,15 @@
                     </div>
                     -->
                 </div>
-                {%else%}
-                   <div class="media align-items-center">
-                    <a href="{{ object.get_absolute_url}}">
-                   <span class="avatar avatar-sm bg-green ">{{ object.name.user.first_name}}</span>
-               </a>
-                   <!--
-                    <div class="media-body">
-                        <h6 class="h5 font-weight-normal mb-0">{{ object.name.username}}</h6>
-                    </div>
-                    -->
-                </div>
-                {%endif%}
+               
              
             </th>
-            <td class="h5 font-weight-normal mb-0">{{ object.service_type}}</td>
+           <td class="h5 font-weight-normal mb-0">{{ object.time}}</td>
     
             
         </tr>
     
-        {%endif%}
+
 {%endfor %}
 
 

@@ -8,4 +8,14 @@ from .forms import *
 #	prepopulated_fields = {'slug':('date',)}
 
 #admin.site.register(Lesson, PostAdmin)
-admin.site.register(Lesson)
+
+class LeassonAdmin(admin.ModelAdmin):
+	list_display = ('date','time', 'name', 'slug', 'service_type', 'duration', 'instructor')
+	list_filter = ('name', 'service_type', 'date', 'instructor')
+	#search_fields = ('name',)
+	raw_id_fields = ('name',)
+	ordering = ['date', 'time']
+	#inlines = [PostPictureInline,]
+
+
+admin.site.register(Lesson, LeassonAdmin)

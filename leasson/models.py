@@ -36,3 +36,8 @@ class Lesson(models.Model):
 		return reverse('leasson:leassondeatil', args=[
 												 self.id
 			])
+	class Meta: 
+		ordering = ("-date", "time")
+
+	def __str__(self):
+		return 'Booked by {}, and accepted {}'.format(self.name, self.instructor) 

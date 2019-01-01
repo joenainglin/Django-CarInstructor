@@ -26,7 +26,7 @@ class InstructorQualification(models.Model):
     title = models.CharField( max_length = 100, blank = True)
     slug = models.SlugField(max_length=140, unique=True, null = False, blank = True)
     year = models.CharField( max_length = 100, blank = True)
-    description = models.CharField( max_length = 100, blank = True) 
+    description = models.CharField( max_length = 500, blank = True) 
 
 
         
@@ -35,6 +35,8 @@ class InstructorQualification(models.Model):
         if not self.slug:
             self.slug = slugify(self.id)
             self.save()
+    def __str__(self):
+        return self.author.username
 
 
 class LearnerAddress(models.Model):
@@ -52,7 +54,8 @@ class LearnerAddress(models.Model):
             self.slug = slugify(self.id)
             self.save()
 
-
+    def __str__(self):
+        return '{} Address '.format(self.owner.username)
 
 
 class Profile(models.Model):
@@ -66,9 +69,13 @@ class Profile(models.Model):
     def __str__(self):
         return (self.user.username)
 
-def create_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
+    def create_user_profile(sender, instance, created, **kwargs):
+        if created:
+            Profile.objects.create(user=instance)
 
-post_save.connect(create_user_profile, sender=User)
+    post_save.connect(create_user_profile, sender=User)
 
+
+
+    def __str__(self):
+        return self.user.username

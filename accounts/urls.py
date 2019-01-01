@@ -19,6 +19,7 @@ urlpatterns = [
 	#path('reset/done/', auth_views.PasswordResetCompleteView.as_view(),name='password_reset_complete'),
 	url(r'^register/', views.register, name='register'),
 	url(r'^profile/', views.profile, name='profile'),
+	url(r'^profile/(?P<username>[a-zA-Z0-9]+)$', views.getuserprofile, name='getuserprofile'),
 	url(r'^usertype/', views.usertype, name='usertype'),
 	url(r'^useraddress/', views.useraddress, name='useraddress'),
 	url(r'^useraddressedit/', views.useraddressedit, name='useraddressedit'),
