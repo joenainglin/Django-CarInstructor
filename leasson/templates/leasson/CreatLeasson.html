@@ -13,21 +13,7 @@
 <section class="slice slice-xl pb-md">
             <div class="container pt-lg-lg">
 
-                 {% if messages %}
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <span class="alert-inner--icon"><i class="fas fa-check"></i></span>
-    {% for message in messages %}
-                     <span class="alert-inner--text">{{message}}</span>
-                {% endfor %}
-
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
-
-
-
-{% endif %}
+                 
                 <div class="row row-grid justify-content-center">
                     <div class="col-lg-8 text-center">
 
@@ -60,7 +46,7 @@
               {% csrf_token %}
               {{ form|crispy }}
 
-              <button action="." type="POST" class="btn btn-lg btn-block btn-primary"  style="    margin-bottom: 15px;">Book</button>
+              <button action="." type="POST" class="btn btn-warning btn-circle text-uppercase"  style="    margin-bottom: 15px;">Book</button>
 
 
           

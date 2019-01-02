@@ -27,8 +27,8 @@
 
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-
- 
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
 
 </head>
 
@@ -48,23 +48,24 @@
                    
                     
 
+ {% if user.is_authenticated %}
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-main-collapse" aria-controls="navbar-main-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
- {% if user.is_authenticated %}
    
                 <div class="collapse navbar-collapse" id="navbar-main-collapse">
                     <ul class="navbar-nav align-items-lg-center">
 
                        {% if user.profile.grouptype == "Instructor"%}
                         <li class="nav-item ">
-                            <a class="p-2 text-dark" href="{% url 'leasson:dashboard' %}">Dashboard <span class="badge badge-success ml-2">{%totalavailablejobs%}</span></a> 
+                            <a class="p-2 text-dark" href="{% url 'leasson:dashboard' %}">Dashboard <span class="badge badge-warning ml-2">{%totalavailablejobs%}</span></a> 
 
                         </li>
                       
                          <li class="nav-item ">
 
-        <a class="p-2 text-dark" href="{% url 'leasson:MyJob' %}">My Job </a>
+        <a class="p-2 text-dark" href="{% url 'leasson:MyJob' %}">My Job  </a>
                         </li>
                          
         {%else%}
@@ -114,6 +115,24 @@
             </div>
         </nav>
     </header>
+<section class="slice " style="padding-bottom: 0px; padding-top: 8rem;">
+            <div class="container pt-lg-lg">
+                    {% if messages %}
+                        <div class="alert alert alert-dismissible fade show" role="alert">
+
+    <span class="alert-inner--icon"><i class="fas fa-check"></i></span>
+    {% for message in messages %}
+                     <span class="alert-inner--text">{{message}}</span>
+                {% endfor %}
+
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+{%endif%}
+
+</div>
+</section>
 
 
 
@@ -185,11 +204,16 @@
           </div>
           <div class="col text-right">
             <ul class="list-group list-group-minimal">
-              <li class="list-group-item"><a href="">Facebook</a></li>
-              <li class="list-group-item"><a href="">Twitter</a></li>
-              <li class="list-group-item"><a href="">Instagram</a></li>
-              <li class="list-group-item"><a href="">Linkedin</a></li>
-            </ul>
+              <li class="list-group-item"><a href=""><button type="button" class="btn btn-facebook btn-icon-label">
+    <span class="btn-inner--icon"><i class="fab fa-facebook"></i></span>
+    <span class="btn-inner--text">Facebook</span>
+</button></a></li>
+
+              <li class="list-group-item"><a href=""><button type="button" class="btn btn-google-plus btn-icon-label">
+    <span class="btn-inner--icon"><i class="fab fa-google-plus-g"></i></span>
+    <span class="btn-inner--text">Google +</span>
+</button></a></li>
+             </ul>
           </div>
         </div>
       </div>

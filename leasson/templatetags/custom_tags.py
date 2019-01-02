@@ -1,6 +1,6 @@
 from django import template
 register = template.Library()
-
+from django.contrib.auth.models import User
 
 from ..models import *
 import requests
@@ -12,5 +12,6 @@ def totalavailablejobs():
 
 @register.simple_tag
 def instructorjobs():
-    jobs =  Lesson.objects.filter(instructor=instructor).count()
+    jobs =  Lesson.objects.filter(instructor=request.user.profile).count()
+
     return{'jobs':jobs,}

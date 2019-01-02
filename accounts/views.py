@@ -83,14 +83,14 @@ def usertype(request):
         form = UserType(data=request.POST, instance=request.user.profile)
         if form.is_valid():
             form.save()
-            messages.success(request, 'Post added successfully')
+            messages.success(request, 'successfully save')
             if request.user.profile.grouptype == 'Learner':
                 return redirect( '/accounts/useraddress')
             if request.user.profile.grouptype == 'Instructor':
                 return redirect( '/accounts/userqualification')
           #form = CreateLessonForm()
         else:
-          messages.error(request, 'Error adding new post')
+          messages.error(request, 'Error ')
     else:
         form = UserType()   
     return render(request, 'accounts/UserType.html',{'form': form, } )
@@ -101,10 +101,10 @@ def userprofileedit(request):
         userprofileform = UserEditForm(request.POST, instance=request.user)
         if userprofileform.is_valid():
             userprofileform.save()
-            messages.success(request, 'Post added successfully')
+            messages.success(request, 'successfully save')
             return redirect('/accounts/profile')
         else:
-          messages.error(request, 'Error adding new post')
+          messages.error(request, 'Error ')
     else:
         userprofileform = UserEditForm()
     return render(request, 'accounts/UserProfileEdit.html',{'userprofileform': userprofileform, } )
@@ -119,12 +119,12 @@ def useraddress(request):
             post = form.save(commit=False)
             post.owner = request.user
             post.save()
-            messages.success(request, 'Post added successfully')
+            #messages.success(request, 'Post added successfully')
             return redirect('/accounts/profile')
             #return redirect( '/accounts/userqualification')
           #form = CreateLessonForm()
         else:
-          messages.error(request, 'Error adding new post')
+          messages.error(request, 'Error ')
     else:
         form = UserAddress()   
     return render(request, 'accounts/UserAddress.html',{'form': form, } )
@@ -137,10 +137,10 @@ def useraddressedit(request):
         useraddresseditform = UserAddressEdit(request.POST, instance=request.user)
         if useraddresseditform.is_valid():
             useraddresseditform.save()
-            messages.success(request, 'Post added successfully')
+            messages.success(request, 'Successfully save')
             return redirect('/accounts/profile')
         else:
-          messages.error(request, 'Error adding new post')
+          messages.error(request, 'Error ')
     else:
         useraddresseditform = UserAddressEdit()
     return render(request, 'accounts/UserAddressEdit.html',{'useraddresseditform': useraddresseditform, } )
@@ -158,10 +158,10 @@ def userqualification(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            messages.success(request, 'Post added successfully')
+            messages.success(request, 'Successfully save')
             return redirect('/accounts/profile')
         else:
-          messages.error(request, 'Error adding new post')
+          messages.error(request, 'Error')
     else:
         form = UserQualification()   
     return render(request, 'accounts/UserQualification.html',{'form': form, } )

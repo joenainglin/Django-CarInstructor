@@ -47,7 +47,7 @@ def createleasson(request):
           return redirect( '/my_leasson')
           #form = CreateLessonForm()
         else:
-          messages.error(request, 'Error adding new post')
+          messages.error(request, 'Error')
     else:
         form = CreateLessonForm()
     return render(request, 'leasson/CreatLeasson.html',{'form': form, } )
@@ -68,7 +68,8 @@ def leassondeatil(request, id):
 @login_required
 def MyJob(request):
     UserJob =  Lesson.objects.filter(instructor=request.user.profile).order_by("-date","time")
-    return render(request, 'leasson/MyJob.html',{'UserJob': UserJob, } )
+    totaljob = UserJob.count()
+    return render(request, 'leasson/MyJob.html',{'UserJob': UserJob,'totaljob':totaljob, } )
 
 
 @login_required
@@ -81,9 +82,9 @@ def leasson_delete(request, slug):
 @login_required
 def my_leasson(request):
     UserPost = Lesson.objects.filter(name_id=request.user.profile).order_by("-date", "-time")
-
+    totalleasson = UserPost.count()
     #return redirect( '/accounts/dashboard.html')
-    return render(request, 'leasson/MyLeasson.html', {'UserPost':UserPost, })
+    return render(request, 'leasson/MyLeasson.html', {'UserPost':UserPost, 'totalleasson':totalleasson})
 
 
 @login_required
@@ -103,8 +104,6 @@ def accept_jobs(request, slug):
         
           
           return render(request, 'leasson/AccaptJob.html',{'object_list': object_list,}) 
-        else:
-          messages.error(request, 'Error adding new post')
    else:
         form = AcceptLeassonForm()
 
