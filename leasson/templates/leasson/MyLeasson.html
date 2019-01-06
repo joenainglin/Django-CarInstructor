@@ -54,8 +54,9 @@
 
         <tr>
             <th scope="col">Date</th>
-            <th scope="col">Instructor</th>
+            
             <th scope="col">Status</th>
+            <th scope="col">Detail</th>
        
         </tr>
     </thead>
@@ -65,18 +66,7 @@
         <tr class="table-divider"></tr>
         <tr class="bg-white">
              <td class="h5 font-weight-normal ">{{ object.date}}</td>
-             <th scope="row">
-                <div class="media align-items-center">
-                    <a href="{{ object.get_absolute_url}}">
-                  {{ object.instructor}}
-               </a>
-                   <!--
-                    <div class="media-body">
-                        <h6 class="h5 font-weight-normal mb-0">{{ object.name.username}}</h6>
-                    </div>
-                    -->
-                </div>
-            </th>
+            
              <!--
             <th scope="row">
                 <div class="media align-items-center">
@@ -95,6 +85,19 @@
           <td class=" badge-dot mr-4">
     <i class="bg-green"></i> Accepted</td>
            {%endif%}
+
+            <th scope="row">
+                <div class="media align-items-center">
+                    <a href="{{ object.get_absolute_url}}">
+                  View Detail
+               </a>
+                   <!--
+                    <div class="media-body">
+                        <h6 class="h5 font-weight-normal mb-0">{{ object.name.username}}</h6>
+                    </div>
+                    -->
+                </div>
+            </th>
             
         </tr>
     

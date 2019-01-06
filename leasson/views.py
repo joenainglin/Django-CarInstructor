@@ -5,6 +5,7 @@ from .models import Lesson
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import *
+from datetime import date
 # Create your views here.
 from django.contrib import messages
 
@@ -14,7 +15,7 @@ def home(request):
 
 @login_required
 def dashboard(request): 
-    object_list = Lesson.objects.filter(instructor__isnull=True).order_by("-date", "time")
+    object_list = Lesson.objects.filter(instructor__isnull=True, date=date.today()).order_by("-date", "time")
     return render(request, 'leasson/dashboard.html', {#'page': page, 
                                                    #'posts': posts, 
                                                   
@@ -104,6 +105,36 @@ def accept_jobs(request, slug):
         
           
           return render(request, 'leasson/AccaptJob.html',{'object_list': object_list,}) 
+   else:
+        form = AcceptLeassonForm()
+
+   return render(request, 'leasson/LeassonDeatil.html',{'object_list': object_list, 
+                                                    'form':form} )
+
+
+@login_required
+def termandcondition(request):
+   return render(request, 'leasson/TermAndCondition.html',{} )
+
+
+
+@login_required
+def cancel_job(request, slug):
+   object_list = get_object_or_404(Lesson, slug= slug)
+   if request.method == "POST":
+        form = AcceptLeassonForm(
+                                    request.POST, instance=object_list)
+
+        if form.is_valid():
+          #cd = form.cleaned_data
+          new_item = form.save(commit=False)
+          new_item.instructor = form.cleaned_data.get("new_item.instructor")
+     
+
+          new_item.save()
+        
+          
+          return render(request, 'leasson/CancelJob.html',{'object_list': object_list,}) 
    else:
         form = AcceptLeassonForm()
 

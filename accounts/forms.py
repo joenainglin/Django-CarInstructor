@@ -11,6 +11,12 @@ class UserRegistrationForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('username', 'first_name', 'email', )
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        username = self.cleaned_data.get('username')
+        if email and User.objects.filter(email=email).exclude(username=username).exists():
+            raise forms.ValidationError(u'Email addresses must be unique.')
+        return email    
 
     def clean_password2(self):
         cd = self.cleaned_data
@@ -23,7 +29,7 @@ class UserType(forms.ModelForm):
     
     class Meta:
         model = Profile
-        fields = ('grouptype', )
+        fields = ('grouptype', 'phone' )
 
 
 class UserEditForm(forms.ModelForm):

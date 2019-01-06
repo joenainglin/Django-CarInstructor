@@ -1,7 +1,7 @@
 
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-
+{% load custom_tags %}
 
 
 {% block title %} My blog {% endblock %}
@@ -33,45 +33,59 @@
 
                 <div class="mb-md text-center">
                     <h3 class="heading h2 text-white"></h3>
-                  
-                <div class="row">
-              
-    <div class="col-lg-12 " style="padding-bottom: 10px;">
-       
-        <div class="card">
-            <div class="card-body ">
-                <h5 class="heading heading-5 strong-600"></h5>
-                            <h4 class="mb-4">Contract</h4>
 
-                            <h1 class="display-4 text-primary text-center" data-pricing-value="100">$<span class="price">45</span></h1>
-                            <span class="h6 text-muted">per service</span>
-                       
-                            
-                     
-                            <ul class="list-unstyled mb-4">
-                               <a href="#"> <li>Name: {{object_list.name.user.username}}</li></a>
-                               
-                                <li>Date: {{object_list.date}}</li>
-                                <li>Time: {{object_list.time}}</li>
-                                <li>Duration: {{object_list.duration}}</li>
-                                <li>Type: {{object_list.service_type}}</li>
-                                <br>
-                                 <li>Address: 
+                </div>
+                  
+                <div class="row row-grid justify-content-center">
+
+    <div class="col-md-8 ">
+        <div class="card card-pricing popular text-center px-3 mb-4 z-depth-3">
+            <div class="card-header py-4">
+                <h5 class="mb-4">Contract</h5>
+                <h1 class="display-4 text-primary text-center">$49</h1>
+                <span class="h6 text-muted">per leasson</span>
+            </div>
+            <div class="card-body">
+                <ul class="list-unstyled mb-4">
+                    <li>Leasson No: {{object_list.id}}</li>
+                    <li>Name: {{object_list.name.user.username}}</li>
+                    <li>Phone: 0{{object_list.name.phone}}</li>
+                    <li>Date: {{object_list.date}}</li>
+                    <li>Time: {{object_list.time}}</li>
+                    <li>Duration: {{object_list.duration}}</li>
+                    <li>Type: {{object_list.service_type}}</li>
+                    <hr>
+                    <li>Address:
 
         {% for address in useraddress %}        
 
-  <p>
-                        {{address.street_no}} {{address.street_name}} {{address.zipcode}} {{address.city}} {{address.state}}</p>
+
+                        {{address.street_no}} {{address.street_name}} {{address.zipcode}} {{address.city}} {{address.state}}
                         
 {%endfor%}</li>
-                            </ul>
-                           
+<hr>
+
+
                                     {% if object_list.instructor  %}
 
         <p class="card-text"> {{object_list.instructor}} will be your instructor for this leasson!</p>
+
+
+          <form action="{% url 'leasson:cancel_job' object_list.slug %}" method="post">
+          {% csrf_token %}
+          {{ form|crispy }}
+
+
+                      <button type="submit" name='leasson_id' value="{{leasson.id}}" class="btn btn-danger btn-circle px-5 mr-lg-4">Cancel Job</button>
+          
+        </form>
+         
+        
         
 
         {%elif object_list.name.user == user %}
+
+
 
           <form action="{% url 'leasson:leasson_delete' object_list.slug %}" method="post">
           {% csrf_token %}
@@ -81,8 +95,9 @@
                       <button type="submit" name='leasson_id' value="{{leasson.id}}" class="btn btn-danger btn-circle px-5 mr-lg-4">Delete</button>
           
         </form>
-
-
+         
+        
+         
         {%else%}
      
          
@@ -97,17 +112,14 @@
 
           
         {%endif%}
-     
-        
+                </ul>
+               
+            </div>
+        </div>
+    </div>
+</div>
 
-                        </div>
-                    </div>
 
-
-
-                    
-
-                </div>
             </div>
         </section>
 

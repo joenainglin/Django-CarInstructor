@@ -14,7 +14,9 @@ urlpatterns = [
     url(r'^my_leasson/', views.my_leasson, name='my_leasson'),
     url(r'^leasson_delete/(?P<slug>[-\w]+)/$', views.leasson_delete, name='leasson_delete'),
     url(r'^accept_job/(?P<slug>[-\w]+)/$', views.accept_jobs, name='accept_jobs'),
-    
+    url(r'^cancel_job/(?P<slug>[-\w]+)/$', views.cancel_job, name='cancel_job'),
+    url(r'termandcondition/', views.termandcondition, name='termandcondition'),
+
     
 
 

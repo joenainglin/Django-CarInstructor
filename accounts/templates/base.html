@@ -16,7 +16,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Karenni Brisbane</title>
+    <title>Car</title>
 
     <!-- Bootstrap core CSS -->
 
@@ -59,7 +59,7 @@
 
                        {% if user.profile.grouptype == "Instructor"%}
                         <li class="nav-item ">
-                            <a class="p-2 text-dark" href="{% url 'leasson:dashboard' %}">Dashboard <span class="badge badge-warning ml-2">{%totalavailablejobs%}</span></a> 
+                            <a class="p-2 text-dark" href="{% url 'leasson:dashboard' %}">Job Pending <span class="badge badge-warning ml-2">{%totalavailablejobs%}</span></a> 
 
                         </li>
                       
@@ -82,6 +82,12 @@
 
                         </li>
                         {%endif%}
+
+                         <li class="nav-item ">
+
+        <a class="p-2 text-dark" href="{% url 'leasson:termandcondition' %}">Term and Condition</a>
+
+                        </li>
                          </ul>
                    
                     
@@ -109,15 +115,19 @@
 
                            
                         </li>
+
+                       
                     </ul>
 
                 </div>
             </div>
         </nav>
     </header>
+
+      {% if messages %}
 <section class="slice " style="padding-bottom: 0px; padding-top: 8rem;">
             <div class="container pt-lg-lg">
-                    {% if messages %}
+                  
                         <div class="alert alert alert-dismissible fade show" role="alert">
 
     <span class="alert-inner--icon"><i class="fas fa-check"></i></span>
@@ -129,11 +139,11 @@
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-{%endif%}
+
 
 </div>
 </section>
-
+{%endif%}
 
 
 

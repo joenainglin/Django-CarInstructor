@@ -39,8 +39,9 @@
 
         <tr>
             <th scope="col">Date</th>
-            <th scope="col">Name</th>
+            
             <th scope="col">Time</th>
+            <th scope="col">Detail</th>
        
         </tr>
     </thead>
@@ -49,18 +50,7 @@
         <tr class="table-divider"></tr>
         <tr class="bg-white">
              <td class="h5 font-weight-normal ">{{ object.date}}</td>
-              <th scope="row">
-                <div class="media align-items-center">
-                    <a href="{{ object.get_absolute_url}}">
-                      {{ object.name.user}}
-                  </a>
-                   <!--
-                    <div class="media-body">
-                        <h6 class="h5 font-weight-normal mb-0">{{ object.name.username}}</h6>
-                    </div>
-                    -->
-                </div>
-            </th>
+             
                       <!--
             <th scope="row">
                 <div class="media align-items-center">
@@ -73,6 +63,18 @@
                 </div>
             </th>
             <td class="h5 font-weight-normal mb-0">{{ object.time}}</td>
+             <th scope="row">
+                <div class="media align-items-center">
+                    <a href="{{ object.get_absolute_url}}">
+                      View detail
+                  </a>
+                   <!--
+                    <div class="media-body">
+                        <h6 class="h5 font-weight-normal mb-0">{{ object.name.username}}</h6>
+                    </div>
+                    -->
+                </div>
+            </th>
     
             
         </tr>
@@ -83,9 +85,7 @@
 
     </tbody>
 </table>
-                        <div class="text-center mt-5">
-                            <a href="#" class="text-white"><i class="far fa-angle-right mr-2"></i>View all job openings</a>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

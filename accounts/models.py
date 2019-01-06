@@ -64,6 +64,7 @@ class Profile(models.Model):
         ('Instructor', 'Instructor'),
     )
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    phone = models.IntegerField(default=None, blank=True, null=True, max_length=10)
     grouptype = models.CharField(max_length=10, choices=GROUP_TYPE, default='Learner')       
 
     def __str__(self):

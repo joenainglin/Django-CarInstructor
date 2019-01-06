@@ -1,0 +1,50 @@
+
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+
+{% block title %} My blog {% endblock %}
+
+{% block content %}
+
+
+
+<section class="slice slice-xl pb-md">
+
+            <div class="container pt-lg-lg">
+                    <div class="alert alert-white alert-dismissible fade show" role="alert">
+                <div class="row row-grid justify-content-center">
+                    <div class="col-lg-8 text-center">
+
+                    
+   
+
+
+
+
+                        <h2 class="heading h1 mb-4 text-black"> Sucessfully </h2>
+                        <p class="lead lh-180 text-black">You have sucessfully cancelled a job!</p>
+
+                        <a class="p-2 text-black" href="{% url 'leasson:dashboard' %}"><span class="badge badge-lg badge-pill badge-danger text-uppercase">Job Pending</span></a>
+
+                       
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+{% endblock %}
