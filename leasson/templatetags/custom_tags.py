@@ -13,7 +13,7 @@ from datetime import date
 
 @register.simple_tag
 def totalavailablejobs():
-    return  Lesson.objects.filter(instructor__isnull=True,date=date.today()).count()
+    return  Lesson.objects.filter(instructor__isnull=True).count()
 
 @register.simple_tag
 def instructorjobs():

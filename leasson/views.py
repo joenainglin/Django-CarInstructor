@@ -17,7 +17,7 @@ def home(request):
 
 @login_required
 def dashboard(request): 
-    object_list = Lesson.objects.filter(instructor__isnull=True, date=date.today()).order_by("-date", "time")
+    object_list = Lesson.objects.filter(instructor__isnull=True).order_by("-date", "time")
     return render(request, 'leasson/dashboard.html', {#'page': page, 
                                                    #'posts': posts, 
                                                   
