@@ -6,6 +6,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import *
 from datetime import date
+from django.core.mail import BadHeaderError, send_mail
+from django.http import HttpResponse, HttpResponseRedirect
 # Create your views here.
 from django.contrib import messages
 
@@ -102,7 +104,15 @@ def accept_jobs(request, slug):
           new_item.instructor = request.user.profile
 
           new_item.save()
-        
+          from_email = object_list.instructor.user.email
+          reciever_email = object_list.name.user.email
+          subject = '{}, You leasson number {} has been accepted!'.format(object_list.name, slug)
+          message = '\tLeasson Detail\nName:{}\nLeasson Number:{}\nService type:{}\nDate:{}\nTime:{}\nYour instructor for this leasson:{}'.format(object_list.name, object_list.slug, object_list.service_type, object_list.date, object_list.time, object_list.instructor)
+          try:
+              send_mail(subject, message,from_email, [reciever_email],fail_silently=False)
+              messages.success(request, "Message have been sucessfully send.")
+          except BadHeaderError:
+              messages.success(request, "Message have fail to send.")
           
           return render(request, 'leasson/AccaptJob.html',{'object_list': object_list,}) 
    else:
@@ -132,9 +142,20 @@ def cancel_job(request, slug):
      
 
           new_item.save()
+          from_email = settings.EMAIL_HOST
+          reciever_email = object_list.name.user.email
+          subject = '{}, You leasson number {} has been cancelled!'.format(object_list.name, slug)
+          message = '\tLeasson Detail\nName:{}\nLeasson Number:{}\nService type:{}\nDate:{}\nTime:{}\nYour instructor for this leasson:{}'.format(object_list.name, object_list.slug, object_list.service_type, object_list.date, object_list.time, object_list.instructor)
+          try:
+              send_mail(subject, message,from_email, [reciever_email],fail_silently=False)
+              messages.success(request, "Message have been sucessfully send.")
+          except BadHeaderError:
+              messages.success(request, "Message have fail to send.")
+          
+          return render(request, 'leasson/AccaptJob.html',{'object_list': object_list,}) 
         
           
-          return render(request, 'leasson/CancelJob.html',{'object_list': object_list,}) 
+         
    else:
         form = AcceptLeassonForm()
 
