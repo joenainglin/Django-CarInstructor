@@ -2,6 +2,7 @@
 {% extends "base.html" %}
 
 {% block content %}
+{% load custom_tags %}
 
 
 
@@ -11,7 +12,7 @@
                 <div class="row row-grid justify-content-center">
                     <div class="col-lg-8 text-center">
                         <h2 class="heading h1 mb-4"> My Job </h2>
-                        <p class="lead lh-180">With Purpose we want to optimize the customization process so your team can save time when building websites.</p>
+                        <p class="lead lh-180">Set your own schedule at your own pace.</p>
                        
                     </div>
                 </div>
@@ -26,10 +27,74 @@
             <div class="container">
                 <div class="mb-md text-center">
 
+
     <span class="badge badge-lg badge-pill btn-warning text-uppercase">{{totaljob}} Jobs</span>
                   
                 </div>
+                 <h3 class="text-center text-white pb-2">Today's Job</h3>
                <table class="table table-hover table-cards align-items-center">
+    <thead>
+
+
+
+
+
+
+        <tr>
+            <th scope="col">Date</th>
+            
+            <th scope="col">Time</th>
+            <th scope="col">Detail</th>
+       
+        </tr>
+    </thead>
+    {% for object in TodayJob %}
+
+
+    <tbody>
+        <tr class="table-divider"></tr>
+        <tr class="bg-white">
+             <td class="h5 font-weight-normal ">{{ object.date}}</td>
+             
+                      <!--
+            <th scope="row">
+                <div class="media align-items-center">
+                   <span class="avatar avatar-lg bg-pink mr-3">{{ object.name.username}}</span>
+                   
+                    <div class="media-body">
+                        <h6 class="h5 font-weight-normal mb-0">{{ object.name.username}}</h6>
+                    </div>
+                    -->
+                </div>
+            </th>
+            <td class="h5 font-weight-normal mb-0">{{ object.time}}</td>
+             <th scope="row">
+                <div class="media align-items-center">
+                    <a href="{{ object.get_absolute_url}}">
+                      View detail
+                  </a>
+                   <!--
+                    <div class="media-body">
+                        <h6 class="h5 font-weight-normal mb-0">{{ object.name.username}}</h6>
+                    </div>
+                    -->
+                </div>
+            </th>
+    
+            
+        </tr>
+    
+
+{%endfor %}
+
+
+    </tbody>
+</table>
+                 
+
+  <h3 class="text-center text-white pb-2">Coming-up Jobs</h3>
+
+                   <table class="table table-hover table-cards align-items-center">
     <thead>
 
 
@@ -84,14 +149,13 @@
 
 
     </tbody>
-</table>
-                        
+</table>       
                     </div>
                 </div>
             </div>
         </section>
 
-
+<!--
 <section class="slice slice-lg delimiter-top">
             <div class="container">
                 <div class="mb-md text-center">
@@ -146,4 +210,5 @@
                 </div>
             </div>
         </section>
+    -->
 {% endblock %}

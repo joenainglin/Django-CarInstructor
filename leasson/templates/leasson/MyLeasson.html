@@ -19,7 +19,7 @@
    
 
                         <h2 class="heading h1 mb-4"> My Booking </h2>
-                        <p class="lead lh-180">With Purpose we want to optimize the customization process so your team can save time when building websites.</p>
+                        <p class="lead lh-180">Request a leasson at your suitable time.</p>
 
                           <a href="{% url 'leasson:createleasson'%}"><button type="button" class="btn btn-warning btn-icon-only rounded-circle">
     <span class="btn-inner--icon">+</i></span>
@@ -42,8 +42,10 @@
 
                        <span class="badge badge-lg badge-pill btn-warning text-uppercase">{{totalleasson}} leasson booked</span>
                    
-                  
+                        
+                     
                 </div>
+                <h3 class="text-center text-white pb-2">Accepted leasson</h3>
                <table class="table table-hover table-cards align-items-center">
     <thead>
 
@@ -62,6 +64,10 @@
     </thead>
 
     {% for object in UserPost %}
+
+
+
+    {% if object.instructor %}
     <tbody>
         <tr class="table-divider"></tr>
         <tr class="bg-white">
@@ -101,22 +107,92 @@
             
         </tr>
     
-      
+      {% endif%}
 {%endfor %}
 
 
     </tbody>
 </table>
-                        <div class="text-center mt-5">
-                            <a href="#" class="text-white"><i class="far fa-angle-right mr-2"></i>View all job openings</a>
-                        </div>
+
+
+ <h3 class="text-center text-white pb-2">On-hold leasson</h3>
+<table class="table table-hover table-cards align-items-center">
+    <thead>
+
+
+
+
+
+
+        <tr>
+            <th scope="col">Date</th>
+            
+            <th scope="col">Status</th>
+            <th scope="col">Detail</th>
+       
+        </tr>
+    </thead>
+
+    {% for object in UserPost %}
+
+    {% if object.instructor is Null%}
+    <tbody>
+        <tr class="table-divider"></tr>
+        <tr class="bg-white">
+             <td class="h5 font-weight-normal ">{{ object.date}}</td>
+            
+             <!--
+            <th scope="row">
+                <div class="media align-items-center">
+                   <span class="avatar avatar-sm bg-pink mr-3">{{ object.name.username}}</span>
+                   
+                    <div class="media-body">
+                        <h6 class="h5 font-weight-normal mb-0">{{ object.name.username}}</h6>
+                    </div>
+                    -->
+                </div>
+            </th>
+            {% if object.instructor is Null %}
+            <td class=" badge-dot mr-4">
+    <i class="bg-red"></i> Hold</td>
+            {%else%}
+          <td class=" badge-dot mr-4">
+    <i class="bg-green"></i> Accepted</td>
+           {%endif%}
+
+            <th scope="row">
+                <div class="media align-items-center">
+                    <a href="{{ object.get_absolute_url}}">
+                  View Detail
+               </a>
+                   <!--
+                    <div class="media-body">
+                        <h6 class="h5 font-weight-normal mb-0">{{ object.name.username}}</h6>
+                    </div>
+                    -->
+                </div>
+            </th>
+            
+        </tr>
+    
+      {% endif%}
+{%endfor %}
+
+
+    </tbody>
+</table>
+
+
+
+
+                     
                     </div>
                 </div>
             </div>
         </section>
 
 
-
+<!--
 <section class="slice slice-lg delimiter-top">
             <div class="container">
                 <div class="mb-md text-center">
@@ -171,7 +247,7 @@
                 </div>
             </div>
         </section>
-        
+        -->
 {% endblock %}
 
 

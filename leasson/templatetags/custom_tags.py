@@ -20,12 +20,11 @@ def instructorjobs():
     jobs =  Lesson.objects.filter(instructor=request.user.profile).count()
 
     return{'jobs':jobs,}
-@register.filter
-def hours_ago(time, hours):
-	time = dt.datetime.now() # 8
-	delta = dt.timedelta(hours = hours) # 24
-	if dt.datetime.now() - time > delta:
-		return timesince(time)  # 8
+
+@register.filter()
+def addDays(days):
+   newDate = datetime.date.today() + datetime.timedelta(days=days)
+   return newDate
 
 @property
 def is_past_due(self):

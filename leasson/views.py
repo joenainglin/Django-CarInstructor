@@ -5,11 +5,14 @@ from .models import Lesson
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from .models import *
-from datetime import date
+
+import datetime
 from django.core.mail import BadHeaderError, send_mail
 from django.http import HttpResponse, HttpResponseRedirect
 # Create your views here.
 from django.contrib import messages
+
+from datetime import datetime, timedelta, time
 
 
 def home(request): 
@@ -18,10 +21,13 @@ def home(request):
 @login_required
 def dashboard(request): 
     object_list = Lesson.objects.filter(instructor__isnull=True).order_by("-date", "time")
+    today = datetime.now().date()
+    TodayJob =  Lesson.objects.filter(instructor=request.user.profile, date=today).order_by("-date","time")
     return render(request, 'leasson/dashboard.html', {#'page': page, 
                                                    #'posts': posts, 
                                                   
                                                    'object_list': object_list,
+                                                   'TodayJob':TodayJob
                                                
                                        
                                                   }) 
@@ -70,9 +76,11 @@ def leassondeatil(request, id):
 
 @login_required
 def MyJob(request):
+    today = datetime.now().date()
     UserJob =  Lesson.objects.filter(instructor=request.user.profile).order_by("-date","time")
+    TodayJob =  Lesson.objects.filter(instructor=request.user.profile, date=today).order_by("-date","time")
     totaljob = UserJob.count()
-    return render(request, 'leasson/MyJob.html',{'UserJob': UserJob,'totaljob':totaljob, } )
+    return render(request, 'leasson/MyJob.html',{'UserJob': UserJob,'totaljob':totaljob,'today':today, 'TodayJob':TodayJob } )
 
 
 @login_required

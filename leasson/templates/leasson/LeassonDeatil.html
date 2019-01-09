@@ -70,7 +70,7 @@
 
         <p class="card-text"> {{object_list.instructor}} will be your instructor for this leasson!</p>
 
-
+            {% if object_list.instructor.user == user %}
           <form action="{% url 'leasson:cancel_job' object_list.slug %}" method="post">
           {% csrf_token %}
           {{ form|crispy }}
@@ -80,7 +80,7 @@
           
         </form>
          
-        
+        {%endif%}
         
 
         {%elif object_list.name.user == user %}
